@@ -12,8 +12,7 @@
                         @endif
                     </div>
                     <div class="mt-1">
-                        <x-markdown>
-                            {{-- {!! \Illuminate\Support\Str::inlineMarkdown($message['content']) !!} --}}
+                        <x-markdown class="dark:text-gray-800">
                             {!! $message['content'] !!}
                         </x-markdown>
                     </div>

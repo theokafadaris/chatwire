@@ -15,3 +15,15 @@ In this project, we have a Laravel 10 Breeze and Livewire, with a login session 
 ### Installation
 
 -   Clone this repository
+-   `composer update`
+-   `cp .env.example .env`
+-   `php artisan key:generate`
+-   `php artisan migrate`
+-   `npm install`
+-   `npm run build`
+-   `php artisan serve`
+-   Open the link: http://127.0.0.1:8000
+
+## Screenshots
+
+![App Screenshot](https://i.imgur.com/yeC92E2.png)
