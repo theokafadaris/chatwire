@@ -24,6 +24,8 @@ In this project, we have a Laravel 10 Breeze and Livewire, with a login session 
 -   `php artisan serve`
 -   Open the link: http://127.0.0.1:8000
 
+Add your OpenAI API key in `.env` file at `OPENAI_API_KEY`
+
 ## Screenshots
 
 ![App Screenshot](https://i.imgur.com/yeC92E2.png)
