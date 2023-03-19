@@ -11,8 +11,8 @@
                             <a href="#" class="font-medium text-gray-900">You</a>
                         @endif
                     </div>
-                    <div class="mt-1">
-                        <x-markdown class="dark:text-gray-800">
+                    <div class="mt-1 ">
+                        <x-markdown class="dark:text-gray-800 prose prose-slate mx-auto lg:prose-lg">
                             {!! $message['content'] !!}
                         </x-markdown>
                     </div>
