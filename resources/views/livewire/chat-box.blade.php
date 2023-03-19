@@ -1,9 +1,22 @@
 <div>
     <div class="flex flex-col space-y-4 p-4">
+        <div class="flex mb-2">
+            <button wire:click="actAs('laravel_tinker')"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Act as Laravel Tinker
+            </button>
+            <button wire:click="actAs('js_console')"
+                class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                Act as JS Console
+            </button>
+        </div>
+
         @foreach ($messages as $message)
             <div
                 class="flex rounded-lg p-4 @if ($message['role'] === 'assistant') bg-green-200 flex-reverse @else bg-blue-200 @endif ">
                 <div class="ml-4">
+                    {{-- Create a button with name Laravel Tinker mode --}}
+
                     <div class="text-lg">
                         @if ($message['role'] === 'assistant')
                             <a href="#" class="font-medium text-gray-900">Server Pilot</a>

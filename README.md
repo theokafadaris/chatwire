@@ -28,4 +28,4 @@ Add your OpenAI API key in `.env` file at `OPENAI_API_KEY`
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/yeC92E2.png)
+![App Screenshot](https://i.imgur.com/iA4JKaq.png)
