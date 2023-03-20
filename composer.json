@@ -12,8 +12,7 @@
         "laravel/tinker": "^2.8",
         "league/commonmark": "^2.3",
         "livewire/livewire": "^2.12",
-        "openai-php/laravel": "^0.4.0",
-        "spatie/laravel-markdown": "^2.2"
+        "openai-php/laravel": "^0.4.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
