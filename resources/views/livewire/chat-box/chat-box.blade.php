@@ -6,7 +6,7 @@
                 <div class="ml-4">
                     <div class="text-lg">
                         @if ($message['role'] === 'assistant')
-                            <a href="#" class="font-medium text-gray-900">Server Pilot</a>
+                            <a href="#" class="font-medium text-gray-900">Your Assistant</a>
                         @else
                             <a href="#" class="font-medium text-gray-900">You</a>
                         @endif

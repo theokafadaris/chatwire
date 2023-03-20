@@ -12,7 +12,7 @@ class ChatBox extends Component
 
     public $chatBoxMaxTokens = 600;
 
-    public $chatBoxTemperature = 0.2;
+    public $chatBoxTemperature = 0.6;
 
     public $transactions = [];
 
@@ -32,7 +32,7 @@ class ChatBox extends Component
                 'model' => 'gpt-3.5-turbo',
                 'messages' => $this->transactions,
                 'max_tokens' => $this->chatBoxMaxTokens,
-                'temperature' => $this->chatBoxTemperature,
+                'temperature' => (float)$this->chatBoxTemperature,
 
             ]);
             $this->transactions[] = ['role' => 'assistant', 'content' => $response->choices[0]->message->content];
