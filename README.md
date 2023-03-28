@@ -1,8 +1,8 @@
-# Laravel Livewire ChatGPT
+# Chatwire
 
-This is a simple clone of ChatGPT made with Laravel Breeze and Livewire using the OpenAI PHP client.
+This is a simple clone of ChatGPT made with Laravel Breeze using Livewire and the OpenAI PHP client.
 
-In this project, we have a Laravel 10 Breeze and Livewire, with a login session and access to OpenAI's ChatGPT API. The entire Laravel project is based on TailwindCSS using Flowbite, Vite.js to compile scripts, MySQL. As far as the extra packages, openai-php is used.
+In this project, we have a Laravel 10 Breeze with Livewire, a login session and access to OpenAI's ChatGPT API. The entire Laravel project is based on TailwindCSS using Flowbite, Vite.js to compile scripts, MySQL. As far as the extra packages Flowbite, Laravel-Livewire, openai-php, livewire-alert are used.
 
 # Get Started
 
