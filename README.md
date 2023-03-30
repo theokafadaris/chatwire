@@ -39,5 +39,4 @@ When you finish your ChatBot conversation you can sent it in your email or save 
 You can see your saved conversations in dashboard page using pagination.
 
 ## Video Presentation
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OjopqEip-QA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[<img src="" width="50%">](https://www.youtube.com/watch?v=OjopqEip-QA "Chatwire")
