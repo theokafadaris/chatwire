@@ -35,7 +35,8 @@ In this project, we have a Laravel 10 Breeze with Livewire, a login session and 
 ## Usage
 
 This project is used to call OpenAI API and display the responses in Laravel Breeze Dashboard using Livewire.
-There is the ability to send your conversation with ChatGPT to your email.
+When you finish your ChatBot conversation you can sent it in your email or save it for future use.
+You can see your saved conversations in dashboard page using pagination.
 
 ## Screenshots
 

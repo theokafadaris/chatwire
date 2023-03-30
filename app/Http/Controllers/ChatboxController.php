@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChatBox;
+
 class ChatboxController extends Controller
 {
-    public function index()
+    public function index(ChatBox $chatbox)
     {
-        return view('chatbox.index');
+        return view('chatbox.index', [
+            'chatbox' => $chatbox
+        ]);
     }
 }

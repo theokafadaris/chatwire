@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ChatBox extends Model
 {
+    protected $table = 'chatboxes';
+
+    protected $fillable = [
+        'user_id',
+        'messages',
+    ];
     public static function availableModels()
     {
         return [
             'gpt-3.5-turbo',
-            'gpt-4'
+            'gpt-4',
         ];
     }
 
