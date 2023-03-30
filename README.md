@@ -38,5 +38,12 @@ This project is used to call OpenAI API and display the responses in Laravel Bre
 When you finish your ChatBot conversation you can sent it in your email or save it for future use.
 You can see your saved conversations in dashboard page using pagination.
 
-## Video Presentation
-[<img src="" width="50%">](https://www.youtube.com/watch?v=OjopqEip-QA "Chatwire")
+## Screenshots
+
+![App Screenshot](https://i.imgur.com/bU2qNWm.png)
+
+![App Screenshot](https://i.imgur.com/bqPrBnL.png)
+
+![App Screenshot](https://i.imgur.com/KiwGh64.png)
+
+
