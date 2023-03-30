@@ -13,6 +13,7 @@ class ChatBox extends Model
         'user_id',
         'messages',
     ];
+
     public static function availableModels()
     {
         return [

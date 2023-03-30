@@ -9,7 +9,7 @@ class ChatboxController extends Controller
     public function index(ChatBox $chatbox)
     {
         return view('chatbox.index', [
-            'chatbox' => $chatbox
+            'chatbox' => $chatbox,
         ]);
     }
 }

@@ -45,7 +45,7 @@ class ChatBox extends Component
     {
         $this->transactions[] = ['role' => 'system', 'content' => 'You are Laravel ChatGPT clone. Answer as concisely as possible.'];
         // If the user has typed something, then asking the ChatGPT API
-        if (!empty($this->message)) {
+        if (! empty($this->message)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->message];
             // dd($this->transactions);
             $response = OpenAI::chat()->create([
