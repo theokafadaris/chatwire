@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $chatboxes = ChatBox::whereUserId(auth()->id())->paginate(4);
+    $chatboxes = ChatBox::whereUserId(auth()->id())->paginate(10);
 
     // dd($chatboxes);
     return view('dashboard', [
@@ -30,6 +30,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::delete('/chatbox/{chatbox}', [ChatBoxController::class, 'destroy'])->name('chatbox.destroy');
+
     Route::get('/chatbox/{chatbox?}', [ChatBoxController::class, 'index'])->name('chatbox');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,4 +39,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

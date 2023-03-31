@@ -12,4 +12,11 @@ class ChatboxController extends Controller
             'chatbox' => $chatbox,
         ]);
     }
+
+    public function destroy(ChatBox $chatbox)
+    {
+        $chatbox->delete();
+
+        return redirect()->route('dashboard');
+    }
 }
