@@ -62,7 +62,7 @@ To use Chatwire, follow these steps:
 
 Here are some screenshots of Chatwire in action:
 
-![App Screenshot](https://i.imgur.com/lJqOpVg.png)
+![App Screenshot](https://i.imgur.com/GBdjlTT.png)
 
 ![App Screenshot](https://i.imgur.com/7XkbLck.png)
 
