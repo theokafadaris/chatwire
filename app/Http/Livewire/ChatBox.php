@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\ChatBox as ModelsChatBox;
+use Illuminate\Support\Facades\Log;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use OpenAI\Laravel\Facades\OpenAI;
@@ -29,6 +30,8 @@ class ChatBox extends Component
         'gpt-3.5-turbo',
     ];
 
+    public $totalTokens;
+
     public function mount(ModelsChatBox $chatbox)
     {
         if ($chatbox->exists) {
@@ -53,8 +56,8 @@ class ChatBox extends Component
                 'messages' => $this->transactions,
                 'max_tokens' => $this->chatBoxMaxTokens,
                 'temperature' => (float) $this->chatBoxTemperature,
-
             ]);
+            $this->totalTokens = $response->usage->totalTokens;
             $this->transactions[] = ['role' => 'assistant', 'content' => $response->choices[0]->message->content];
             $this->messages = collect($this->transactions)->reject(fn ($message) => $message['role'] === 'system');
             $this->message = '';
@@ -105,6 +108,7 @@ class ChatBox extends Component
             if ($this->chatbox->exists) {
                 $this->chatbox->update([
                     'messages' => $this->messages,
+                    'total_tokens' => $this->totalTokens,
                 ]);
                 $this->message = '';
                 $this->alert('success', 'Your chat was updated successfully!', [
@@ -116,6 +120,7 @@ class ChatBox extends Component
                 $chatBox = new ModelsChatBox();
                 $chatBox->user_id = auth()->user()->id;
                 $chatBox->messages = $this->messages;
+                $chatBox->total_tokens = $this->totalTokens;
                 $chatBox->save();
                 $this->message = '';
                 $this->alert('success', 'Your chat was saved successfully!', [
