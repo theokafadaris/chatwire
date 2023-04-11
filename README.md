@@ -1,6 +1,6 @@
 # Chatwire
 
-Chatwire is a simple clone of ChatGPT made with Laravel Breeze using Livewire and the OpenAI PHP client.
+Chatwire is a clone of ChatGPT made with Laravel Breeze using Livewire and the OpenAI PHP client.
 
 ## Description
 
@@ -9,6 +9,30 @@ In this project, we have a Laravel 10 Breeze with Livewire, a login session, and
 ## Purpose
 
 Chatwire is a Laravel-based project that calls OpenAI's API and displays the responses in Laravel Breeze Dashboard using Livewire. When you finish your ChatBot conversation, you can send it in your email or save it for future use. You can see your saved conversations on the dashboard page using pagination.
+
+## Features
+
+#### Model Configuration
+
+-   All ChatGPT Models (GPT-4)
+-   Custom System Instruction
+-   Temperature Control
+-   Maximum Token Control
+
+#### Chat Experience
+
+-   Prompt Library
+
+#### Chat Management
+
+-   Share Chat by email
+-   Save Chat to Database
+-   Paginate Chats
+
+#### Security and Privacy
+
+-   Private By Default
+-   Self-hosted
 
 ## Technologies Used
 
@@ -64,7 +88,7 @@ Here are some screenshots of Chatwire in action:
 
 ![App Screenshot](https://i.imgur.com/GBdjlTT.png)
 
-![App Screenshot](https://i.imgur.com/7XkbLck.png)
+![App Screenshot](https://i.imgur.com/wkpgKAr.png)
 
 ![App Screenshot](https://i.imgur.com/R7S1phq.png)
 
