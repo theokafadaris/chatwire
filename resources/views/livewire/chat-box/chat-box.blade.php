@@ -1,5 +1,18 @@
 <div>
+    <button wire:click="$toggle('showSystemInstruction')"
+        class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-900">
+        Initial System Instruction
+    </button>
+
+    @if ($showSystemInstruction)
+    <div class="mt-4">
+        <textarea wire:model.lazy="chatBoxSystemInstruction" rows="2"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter Initial System Instruction"></textarea>
+    </div>
+    @endif
     <div class="flex flex-col space-y-4 p-4">
+
         @foreach ($messages as $message)
         <div
             class="flex rounded-lg p-4 @if ($message['role'] === 'assistant') bg-green-200 flex-reverse @else bg-blue-200 @endif ">
@@ -124,18 +137,5 @@
             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset
             Discussion
         </button>
-        <div>
-            <button wire:click="$toggle('showSystemInstruction')"
-                class="focus:outline-none text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-900">
-                Initial System Instruction
-            </button>
-        </div>
     </div>
-    @if ($showSystemInstruction)
-    <div class="mt-2">
-        <textarea wire:model.lazy="chatBoxSystemInstruction" rows="2"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter Initial System Instruction"></textarea>
-    </div>
-    @endif
 </div>
