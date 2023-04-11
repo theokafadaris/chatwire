@@ -62,12 +62,12 @@
         <div>
             <label for="chatBoxModel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Model</label>
-            <select wire:model="chatBoxModel"
+            <select wire:model.defer="chatBoxModel"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option>Choose am OpenAI Model</option>
-                @foreach ($availableModels as $availableModel)
-                <option {{ $availableModel==$chatBoxModel ? 'selected' : '' }} value="{{ $availableModel }}">
-                    {{ $availableModel }}</option>
+                <option>Choose an OpenAI Model</option>
+                @foreach ($availableModels as $chatBoxModelKey => $chatBoxModelValue)
+                <option {{ $chatBoxModelKey==$chatBoxModel ? 'selected' : '' }} value="{{ $chatBoxModelKey }}">
+                    {{ $chatBoxModelValue }}</option>
                 @endforeach
             </select>
         </div>
@@ -108,7 +108,7 @@
                 placeholder="1 - 4096">
         </div>
     </div>
-    <div class="mt-6">
+    <div class="flex mt-6">
         {{-- Add a save button --}}
         <button wire:click="saveChat"
             class="focus:outline-none text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-900">
@@ -124,6 +124,18 @@
             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset
             Discussion
         </button>
+        <div>
+            <button wire:click="$toggle('showSystemInstruction')"
+                class="focus:outline-none text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-900">
+                Initial System Instruction
+            </button>
+        </div>
     </div>
-
+    @if ($showSystemInstruction)
+    <div class="mt-2">
+        <textarea wire:model.lazy="chatBoxSystemInstruction" rows="2"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter Initial System Instruction"></textarea>
+    </div>
+    @endif
 </div>

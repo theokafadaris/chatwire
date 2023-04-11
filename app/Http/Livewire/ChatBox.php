@@ -26,11 +26,13 @@ class ChatBox extends Component
 
     public $chatBoxRole;
 
-    public $chatBoxModel = [
-        'gpt-3.5-turbo',
-    ];
+    public $chatBoxModel = 'gpt-3.5-turbo';
 
     public $totalTokens;
+
+    public $showSystemInstruction = false;
+
+    public $chatBoxSystemInstruction = 'You are Chatwire. Answer as concisely as possible.';
 
     public function mount(ModelsChatBox $chatbox)
     {
@@ -46,7 +48,7 @@ class ChatBox extends Component
 
     public function ask()
     {
-        $this->transactions[] = ['role' => 'system', 'content' => 'You are Laravel ChatGPT clone. Answer as concisely as possible.'];
+        $this->transactions[] = ['role' => 'system', 'content' => $this->chatBoxSystemInstruction];
         // If the user has typed something, then asking the ChatGPT API
         if (!empty($this->message)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->message];
