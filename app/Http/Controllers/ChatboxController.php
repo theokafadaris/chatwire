@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ChatBox;
 
-class ChatboxController extends Controller
+class ChatBoxController extends Controller
 {
     public function index(ChatBox $chatbox)
     {
