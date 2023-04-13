@@ -4,6 +4,8 @@ namespace App\Models;
 
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
+use OpenAI\Laravel\Facades\OpenAI;
+
 
 class ChatBox extends Model
 {
@@ -45,5 +47,18 @@ class ChatBox extends Model
         }
 
         return $prompts;
+    }
+
+    public static function ask($chatBoxModel, $chatBoxMaxTokens, $chatBoxTemperature, $transactions)
+    {
+        $api_key = env('OPENAI_API_KEY');
+        $client =  OpenAI::client($api_key);
+        $response = $client->chat()->create([
+            'model' => $chatBoxModel,
+            'messages' => $transactions,
+            'max_tokens' => $chatBoxMaxTokens,
+            'temperature' => (float) $chatBoxTemperature,
+        ]);
+        return $response;
     }
 }

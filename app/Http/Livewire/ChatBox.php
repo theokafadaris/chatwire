@@ -3,10 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\ChatBox as ModelsChatBox;
-use Illuminate\Support\Facades\Log;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use OpenAI\Laravel\Facades\OpenAI;
 
 class ChatBox extends Component
 {
@@ -52,13 +50,12 @@ class ChatBox extends Component
         // If the user has typed something, then asking the ChatGPT API
         if (!empty($this->message)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->message];
-            // dd($this->transactions);
-            $response = OpenAI::chat()->create([
-                'model' => 'gpt-3.5-turbo',
-                'messages' => $this->transactions,
-                'max_tokens' => $this->chatBoxMaxTokens,
-                'temperature' => (float) $this->chatBoxTemperature,
-            ]);
+            $response = ModelsChatBox::ask(
+                $this->chatBoxModel,
+                $this->chatBoxMaxTokens,
+                $this->chatBoxTemperature,
+                $this->transactions
+            );
             $this->totalTokens = $response->usage->totalTokens;
             $this->transactions[] = ['role' => 'assistant', 'content' => $response->choices[0]->message->content];
             $this->messages = collect($this->transactions)->reject(fn ($message) => $message['role'] === 'system');
