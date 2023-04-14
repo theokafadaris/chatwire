@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
                         {{ __('ChatBox') }}
                     </x-nav-link>
+                    {{-- <x-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
+                        {{ __('Wordpress') }}
+                    </x-nav-link> --}}
                 </div>
             </div>
 
@@ -49,8 +52,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -84,6 +86,9 @@
             <x-responsive-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
                 {{ __('Chat Box') }}
             </x-responsive-nav-link>
+            {{-- <x-responsive-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
+                {{ __('Wordpress') }}
+            </x-responsive-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->
@@ -102,8 +107,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                        onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

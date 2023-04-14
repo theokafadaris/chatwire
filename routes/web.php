@@ -18,19 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // $results = WordpressController::getPostsCount('https://blog.beeing.gr/');
-    // $results = WordpressController::getPostsPerPage('https://blog.beeing.gr/', 1, 1);
-    // foreach ($results as $result) {
-    //     echo $result->content->rendered . '<br>';
-    // }
-    // return $results;
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
     $chatboxes = ChatBox::whereUserId(auth()->id())->paginate(10);
-
-    // dd($chatboxes);
     return view('dashboard', [
         'chatboxes' => $chatboxes,
     ]);

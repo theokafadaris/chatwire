@@ -51,12 +51,10 @@ class ChatBox extends Model
 
     public static function ask($chatBoxModel, $chatBoxMaxTokens, $chatBoxTemperature, $transactions)
     {
-        $api_key = env('OPENAI_API_KEY');
-        $client =  OpenAI::client($api_key);
-        $response = $client->chat()->create([
+        $response = OpenAI::chat()->create([
             'model' => $chatBoxModel,
             'messages' => $transactions,
-            'max_tokens' => $chatBoxMaxTokens,
+            'max_tokens' => (int)$chatBoxMaxTokens,
             'temperature' => (float) $chatBoxTemperature,
         ]);
         return $response;
