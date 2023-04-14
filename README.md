@@ -58,7 +58,7 @@ The project uses the following technologies:
 To run Chatwire locally, follow these steps:
 
 1. Clone this repository
-2. Run `composer update`
+2. Run `composer install`
 3. Copy `.env.example` to `.env`
 4. Add your OpenAI API key in `.env` file at `OPENAI_API_KEY`
    ![App Screenshot](https://i.imgur.com/e8IdRtB.png)
