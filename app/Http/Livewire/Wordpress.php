@@ -28,7 +28,7 @@ class Wordpress extends Component
 
     public $chatBoxSystemInstruction = 'I want you to act as a SEO expert. 
                 I will type blog post title and body and you will reply with SEO focus keywords, 
-                meta title and meta description. I want you to only reply with this words, 
+                meta title and meta description in a json format. I want you to only reply with this words, 
                 and nothing else. Do not write explanations. 
                 My first blog post title and body is the following.';
 
@@ -57,8 +57,13 @@ class Wordpress extends Component
             $this->totalTokens = $response->usage->totalTokens;
             $this->transactions[] = ['role' => 'assistant', 'content' => $response->choices[0]->message->content];
             $this->messages = collect($this->transactions)->reject(fn ($message) => $message['role'] === 'system');
-            dd($this->messages);
+            // dd($this->messages);
         }
+    }
+
+    public function resetUrl()
+    {
+        return redirect()->route('wordpress');
     }
 
     public function render()

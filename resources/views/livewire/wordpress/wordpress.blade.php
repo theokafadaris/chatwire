@@ -7,6 +7,16 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter your wordpress site" required>
             <div class="flex justify-end">
+                @if($url)
+                <button type="button"
+                    class="mr-2 text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    disabled>Load Recent Post</button>
+
+                <button wire:click="resetUrl" type="button"
+                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Reset
+                </button>
+                @else
                 <button wire:loading.remove wire:target="load"
                     class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     Load Recent Post
@@ -27,6 +37,7 @@
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
+                @endif
             </div>
 
         </form>
@@ -41,9 +52,14 @@
     </div>
     {{-- Add a green button for sending the text to Chatgpt for SEO proposals --}}
     <div class="mt-2 flex justify-end">
+        @if($messages)
+        <button type="button"
+            class="text-white bg-green-400 dark:bg-green-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            disabled>SEO Proposals</button>
+        @else
         <button wire:click="ask" wire:loading.remove wire:target="ask"
             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-            Send to Chatgpt
+            SEO Proposals
         </button>
         <div wire:loading wire:target="ask"
             class="flex items-center justify-center borderrounded-lg dark:bg-gray-800 dark:border-gray-700">
@@ -63,3 +79,55 @@
         </div>
         @endif
     </div>
+    @if ($messages)
+    <div class="m-2">
+        <h2 class="mt-2 mb-2 text-2xl font-bold dark:text-white">Chatwire SEO proposals</h2>
+        @foreach ($messages as $message)
+        @if ($message['role'] === 'assistant')
+        @php
+        $decodedContent = json_decode($message['content']);
+        @endphp
+
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Focus Keywords
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Meta Title
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Meta Description
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            @foreach ($decodedContent->focus_keywords as $keyword)
+                            {{$keyword}}
+                            {{-- Check if the last loop not to add , --}}
+                            @if (!$loop->last)
+                            ,
+                            @endif
+                            @endforeach
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$decodedContent->meta_title}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$decodedContent->meta_description}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        @endif
+        @endforeach
+    </div>
+
+    @endif
+    @endif
+</div>

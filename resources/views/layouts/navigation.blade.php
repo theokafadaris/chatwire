@@ -18,9 +18,9 @@
                     <x-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
                         {{ __('ChatBox') }}
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
+                    <x-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
                         {{ __('Wordpress') }}
-                    </x-nav-link> --}}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -86,9 +86,9 @@
             <x-responsive-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
                 {{ __('Chat Box') }}
             </x-responsive-nav-link>
-            {{-- <x-responsive-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
+            <x-responsive-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
                 {{ __('Wordpress') }}
-            </x-responsive-nav-link> --}}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
