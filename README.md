@@ -23,6 +23,10 @@ Chatwire is a Laravel-based project that calls OpenAI's API and displays the res
 
 -   Prompt Library
 
+#### Wordpress Integration
+
+-   SEO optimization proposal (focus keywords, meta title, meta description) for latest post
+
 #### Chat Management
 
 -   Share Chat by email
@@ -91,6 +95,8 @@ Here are some screenshots of Chatwire in action:
 ![App Screenshot](https://i.imgur.com/wkpgKAr.png)
 
 ![App Screenshot](https://i.imgur.com/R7S1phq.png)
+
+![App Screenshot](https://i.imgur.com/5UAOF8M.png)
 
 ## Contributing
 
