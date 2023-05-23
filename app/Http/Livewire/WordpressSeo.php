@@ -6,7 +6,7 @@ use App\Models\ChatBox;
 use Livewire\Component;
 use App\Models\Wordpress as ModelsWordpress;
 
-class Wordpress extends Component
+class WordpressSeo extends Component
 {
     public $url;
 
@@ -68,6 +68,6 @@ class Wordpress extends Component
 
     public function render()
     {
-        return view('livewire.wordpress.wordpress');
+        return view('livewire.wordpress.seo');
     }
 }

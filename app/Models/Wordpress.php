@@ -49,4 +49,33 @@ class Wordpress extends Model
         // dd($posts);
         return $posts;
     }
+
+    public static function createPost($url, $title, $body, $status, $username, $password)
+    {
+        // dd($url, $title, $body, $status, $username, $password);
+        //Create a new guzzle client
+        $client = new Client();
+
+        $payload = [
+            'title' => $title,
+            'content' => $body,
+            'status' => $status,
+            // Add any other required fields
+        ];
+
+        //Try to create a new post using the wordpress api
+        try {
+            $response = $client->post($url . '/wp-json/wp/v2/posts', [
+                // 'auth' => [$username, $password],
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
+                ],
+                'json' => $payload,
+            ]);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }
