@@ -21,7 +21,9 @@ class ChatBox extends Model
     {
         return [
             'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
+            'gpt-3.5-turbo-16k' => 'GPT-3.5 Turbo 16k',
             'gpt-4' => 'GPT-4',
+            'gpt-4-32k' => 'GPT-4 32k',
         ];
     }
 
