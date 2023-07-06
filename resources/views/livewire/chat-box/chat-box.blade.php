@@ -5,32 +5,32 @@
     </button>
 
     @if ($showSystemInstruction)
-    <div class="mt-4">
-        <textarea wire:model.lazy="chatBoxSystemInstruction" rows="2"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter Initial System Instruction"></textarea>
-    </div>
+        <div class="mt-4">
+            <textarea wire:model.lazy="chatBoxSystemInstruction" rows="2"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter Initial System Instruction"></textarea>
+        </div>
     @endif
     <div class="flex flex-col space-y-4 p-4">
 
         @foreach ($messages as $message)
-        <div
-            class="flex rounded-lg p-4 @if ($message['role'] === 'assistant') bg-green-200 flex-reverse @else bg-blue-200 @endif ">
-            <div class="ml-4">
-                <div class="text-lg">
-                    @if ($message['role'] === 'assistant')
-                    <a href="#" class="font-medium text-gray-900">Your Assistant</a>
-                    @else
-                    <a href="#" class="font-medium text-gray-900">You</a>
-                    @endif
-                </div>
-                <div class="mt-1 ">
-                    <p class="text-gray-600">
-                        {!! \Illuminate\Mail\Markdown::parse($message['content']) !!}
-                    </p>
+            <div
+                class="flex rounded-lg p-4 @if ($message['role'] === 'assistant') bg-green-200 flex-reverse @else bg-blue-200 @endif ">
+                <div class="ml-4">
+                    <div class="text-lg">
+                        @if ($message['role'] === 'assistant')
+                            <a href="#" class="font-medium text-gray-900">Your Assistant</a>
+                        @else
+                            <a href="#" class="font-medium text-gray-900">You</a>
+                        @endif
+                    </div>
+                    <div class="mt-1 ">
+                        <p class="text-gray-600">
+                            {!! \Illuminate\Mail\Markdown::parse($message['content']) !!}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
     <div>
@@ -78,9 +78,9 @@
             <select wire:model.defer="chatBoxModel"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option>Choose an OpenAI Model</option>
-                @foreach ($availableModels as $chatBoxModelKey => $chatBoxModelValue)
-                <option {{ $chatBoxModelKey==$chatBoxModel ? 'selected' : '' }} value="{{ $chatBoxModelKey }}">
-                    {{ $chatBoxModelValue }}</option>
+                @foreach ($availableGPTModels as $chatBoxModelKey => $chatBoxModelValue)
+                    <option {{ $chatBoxModelKey == $chatBoxModel ? 'selected' : '' }} value="{{ $chatBoxModelKey }}">
+                        {{ $chatBoxModelValue }}</option>
                 @endforeach
             </select>
         </div>
@@ -90,9 +90,9 @@
             <select data-popover-target="popover-default" wire:model="chatBoxRole"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value=''>Choose a Prompt</option>
-                @foreach ($availableRoles as $availableRoleKey=>$availableRoleValue)
-                <option value="{{ $availableRoleValue }}">
-                    Act as {{ $availableRoleKey }}</option>
+                @foreach ($availableGPTRoles as $availableRoleKey => $availableRoleValue)
+                    <option value="{{ $availableRoleValue }}">
+                        Act as {{ $availableRoleKey }}</option>
                 @endforeach
             </select>
             <div data-popover id="popover-default" role="tooltip"

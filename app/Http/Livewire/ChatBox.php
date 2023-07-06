@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\ChatBox as ModelsChatBox;
+use App\Models\ChatBox as ChatBoxModel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -32,7 +32,7 @@ class ChatBox extends Component
 
     public $chatBoxSystemInstruction = 'You are Chatwire. Answer as concisely as possible.';
 
-    public function mount(ModelsChatBox $chatbox)
+    public function mount(ChatBoxModel $chatbox)
     {
         if ($chatbox->exists) {
             $this->messages = json_decode($chatbox->messages, true);
@@ -50,7 +50,7 @@ class ChatBox extends Component
         // If the user has typed something, then asking the ChatGPT API
         if (!empty($this->message)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->message];
-            $response = ModelsChatBox::ask(
+            $response = ChatBoxModel::ask(
                 $this->chatBoxModel,
                 $this->chatBoxMaxTokens,
                 $this->chatBoxTemperature,
@@ -116,7 +116,7 @@ class ChatBox extends Component
                     'toast' => true,
                 ]);
             } else {
-                $chatBox = new ModelsChatBox();
+                $chatBox = new ChatBoxModel();
                 $chatBox->user_id = auth()->user()->id;
                 $chatBox->messages = $this->messages;
                 $chatBox->total_tokens = $this->totalTokens;
@@ -134,8 +134,8 @@ class ChatBox extends Component
     public function render()
     {
         return view('livewire.chat-box.chat-box', [
-            'availableModels' => ModelsChatBox::availableModels(),
-            'availableRoles' => ModelsChatBox::availableRoles(),
+            'availableGPTModels' => ChatBoxModel::availableGPTModels(),
+            'availableGPTRoles' => ChatBoxModel::availableGPTRoles(),
         ]);
     }
 }

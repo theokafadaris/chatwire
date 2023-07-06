@@ -17,7 +17,7 @@ class ChatBox extends Model
         'messages',
     ];
 
-    public static function availableModels()
+    public static function availableGPTModels()
     {
         return [
             'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
@@ -27,7 +27,7 @@ class ChatBox extends Model
         ];
     }
 
-    public static function availableRoles()
+    public static function availableGPTRoles()
     {
         $client = new Client();
         $response = $client->get('https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv');
