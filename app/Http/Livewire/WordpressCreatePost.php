@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\ChatBox;
 use App\Models\Wordpress;
+use App\Services\openAIService;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -44,13 +44,20 @@ class WordpressCreatePost extends Component
 
     public $password;
 
+    protected $openAIService;
+
+    public function boot(openAIService $openAIService)
+    {
+        $this->openAIService = $openAIService;
+    }
+
     public function ask()
     {
         $this->transactions[] = ['role' => 'system', 'content' => $this->chatBoxSystemInstruction];
         // If the user has typed something, then asking the ChatGPT API
         if (!empty($this->topic)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->topic];
-            $response = ChatBox::ask(
+            $response = $this->openAIService->ask(
                 $this->chatBoxModel,
                 $this->chatBoxMaxTokens,
                 $this->chatBoxTemperature,
