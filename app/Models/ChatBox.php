@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
-use OpenAI\Laravel\Facades\OpenAI;
 
 
 class ChatBox extends Model
@@ -16,49 +14,4 @@ class ChatBox extends Model
         'total_tokens',
         'messages',
     ];
-
-    public static function availableGPTModels()
-    {
-        return [
-            'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
-            'gpt-3.5-turbo-16k' => 'GPT-3.5 Turbo 16k',
-            'gpt-4' => 'GPT-4',
-            'gpt-4-32k' => 'GPT-4 32k',
-        ];
-    }
-
-    public static function availableGPTRoles()
-    {
-        $client = new Client();
-        $response = $client->get('https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv');
-        $records = [];
-        $headers = null;
-        $csvString = $response->getBody();
-        // Remove the first line and last line
-        $csvString = substr($csvString, strpos($csvString, "\n") + 1);
-        $csvString = substr($csvString, 0, strrpos($csvString, "\n"));
-        $prompts = [];
-
-        foreach (explode("\n", $csvString) as $line) {
-            $values = str_getcsv($line);
-
-            $promptName = trim($values[0], '"');
-            $promptDescription = trim($values[1], '"');
-
-            $prompts[$promptName] = $promptDescription;
-        }
-
-        return $prompts;
-    }
-
-    public static function ask($chatBoxModel, $chatBoxMaxTokens, $chatBoxTemperature, $transactions)
-    {
-        $response = OpenAI::chat()->create([
-            'model' => $chatBoxModel,
-            'messages' => $transactions,
-            'max_tokens' => (int)$chatBoxMaxTokens,
-            'temperature' => (float) $chatBoxTemperature,
-        ]);
-        return $response;
-    }
 }
