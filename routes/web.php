@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $chatboxes = ChatBox::whereUserId(auth()->id())->paginate(10);
+
     return view('dashboard', [
         'chatboxes' => $chatboxes,
     ]);
@@ -39,4 +40,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

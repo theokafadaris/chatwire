@@ -5,17 +5,29 @@ namespace App\Services;
 use GuzzleHttp\Client;
 use OpenAI\Laravel\Facades\OpenAI;
 
-
 class openAIService
 {
+    public function transcribe($filePath, $language)
+    {
+        $response = OpenAI::audio()->transcribe([
+            'model' => 'whisper-1',
+            'file' => fopen(storage_path('app/'.$filePath), 'r'),
+            'language' => $language,
+            'response_format' => 'verbose_json',
+        ]);
+
+        return $response;
+    }
+
     public function ask($chatBoxModel, $chatBoxMaxTokens, $chatBoxTemperature, $transactions)
     {
         $response = OpenAI::chat()->create([
             'model' => $chatBoxModel,
             'messages' => $transactions,
-            'max_tokens' => (int)$chatBoxMaxTokens,
+            'max_tokens' => (int) $chatBoxMaxTokens,
             'temperature' => (float) $chatBoxTemperature,
         ]);
+
         return $response;
     }
 

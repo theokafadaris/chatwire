@@ -1,6 +1,6 @@
 # Chatwire
 
-Chatwire is a clone of ChatGPT made with Laravel Breeze using Livewire and the OpenAI PHP client.
+Chatwire is a clone of ChatGPT made with Laravel Breeze using Livewire and the OpenAI PHP client (Chat and Audio Resource).
 
 ## Description
 
@@ -10,11 +10,14 @@ In this project, we have a Laravel 10 Breeze with Livewire, a login session, and
 
 Chatwire is a Laravel-based project that calls OpenAI's API and displays the responses in Laravel Breeze Dashboard using Livewire. When you finish your ChatBot conversation, you can send it in your email or save it for future use. You can see your saved conversations on the dashboard page using pagination.
 
+Now, you can upload your audio files to create transcription using Audio Resource of OpenAI.
+
 ## Features
 
 #### Model Configuration
 
 -   All ChatGPT Models (GPT-4)
+-   Audio Resource using Whisper Model
 -   Custom System Instruction
 -   Temperature Control
 -   Maximum Token Control
@@ -71,13 +74,14 @@ To run Chatwire locally, follow these steps:
    ![App Screenshot](https://i.imgur.com/Vh0SJuy.png)
 6. Run `php artisan key:generate`
 7. Run `php artisan migrate`
-8. Run `npm install`
-9. Run `npm run build`
-10. Run `php artisan serve`
-11. Add the following line to your cronjobs:
+8. Run `php artisan storage:link`
+9. Run `npm install`
+10. Run `npm run build`
+11. Run `php artisan serve`
+12. Add the following line to your cronjobs:
     `* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1`
     The above will be used for the email queue job that it is used for sending the emails
-12. Open the link: http://127.0.0.1:8000
+13. Open the link: http://127.0.0.1:8000
 
 ## Usage
 
@@ -86,6 +90,7 @@ To use Chatwire, follow these steps:
 1. Start a conversation with the chatbot on the dashboard page.
 2. When you finish the conversation, you can save it or send it to your email.
 3. You can view your saved conversations on the dashboard page using pagination.
+4. You can upload an audio file and ChatGPT will create the trancription for you.
 
 ## Screenshots
 
@@ -96,6 +101,8 @@ Here are some screenshots of Chatwire in action:
 ![App Screenshot](https://i.imgur.com/wkpgKAr.png)
 
 ![App Screenshot](https://i.imgur.com/R7S1phq.png)
+
+![App Screenshot](https://i.imgur.com/GuImTR8.png)
 
 ![App Screenshot](https://i.imgur.com/5UAOF8M.png)
 

@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Wordpress as WordpressModel;
 use App\Services\openAIService;
+use Livewire\Component;
 
 class WordpressSeo extends Component
 {
@@ -38,21 +38,22 @@ class WordpressSeo extends Component
     {
         $this->openAIService = $openAIService;
     }
+
     public function load()
     {
         $this->validate([
-            'url' => 'required|url'
+            'url' => 'required|url',
         ]);
         $response = WordpressModel::getPostsPerPage($this->url, 1, 1)[0];
 
-        $this->firstPost = 'title: ' . $response->title->rendered . PHP_EOL . 'body: ' . $response->content->rendered;
+        $this->firstPost = 'title: '.$response->title->rendered.PHP_EOL.'body: '.$response->content->rendered;
     }
 
     public function ask()
     {
         $this->transactions[] = ['role' => 'system', 'content' => $this->chatBoxSystemInstruction];
         // If the user has typed something, then asking the ChatGPT API
-        if (!empty($this->firstPost)) {
+        if (! empty($this->firstPost)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->firstPost];
             $response = $this->openAIService->ask(
                 $this->chatBoxModel,

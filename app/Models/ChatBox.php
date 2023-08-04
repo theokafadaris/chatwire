@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class ChatBox extends Model
 {
     protected $table = 'chatboxes';
