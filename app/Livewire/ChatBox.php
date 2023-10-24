@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\ChatBox as ChatBoxModel;
 use App\Services\openAIService;
@@ -56,7 +56,7 @@ class ChatBox extends Component
     {
         $this->transactions[] = ['role' => 'system', 'content' => $this->chatBoxSystemInstruction];
         // If the user has typed something, then asking the ChatGPT API
-        if (! empty($this->message)) {
+        if (!empty($this->message)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->message];
             $response = $this->openAIService->ask(
                 $this->chatBoxModel,

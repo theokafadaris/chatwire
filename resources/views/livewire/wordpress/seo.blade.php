@@ -1,10 +1,10 @@
 <div class="space-y-4">
     <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">SEO Optimization</h1>
     <div>
-        <form class="space-y-4" wire:submit.prevent="load">
+        <form class="space-y-4" wire:submit="load">
             <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Website
                 URL</label>
-            <input wire:model.defer='url' type="url" id="website"
+            <input wire:model='url' type="url" id="website"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter your wordpress site" required>
             <div class="flex justify-end">
@@ -47,7 +47,7 @@
         <div>
             <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Most Recent Post
                 ({{ Str::of($firstPost)->wordCount() }} words)</label>
-            <textarea wire:model="firstPost" id="message" rows="4"
+            <textarea wire:model.live="firstPost" id="message" rows="4"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="First post will be displayed here"></textarea>
         </div>

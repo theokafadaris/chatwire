@@ -6,13 +6,12 @@
 
     @if ($showSystemInstruction)
         <div class="mt-4">
-            <textarea wire:model.lazy="chatBoxSystemInstruction" rows="2"
+            <textarea wire:model.blur="chatBoxSystemInstruction" rows="2"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter Initial System Instruction"></textarea>
         </div>
     @endif
     <div class="flex flex-col space-y-4 p-4">
-
         @foreach ($messages as $message)
             <div
                 class="flex rounded-lg p-4 @if ($message['role'] === 'assistant') bg-green-200 flex-reverse @else bg-blue-200 @endif ">
@@ -34,10 +33,10 @@
         @endforeach
     </div>
     <div>
-        <form wire:submit.prevent="ask">
+        <form wire:submit="ask">
             <label for="chat" class="sr-only">Your message</label>
             <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
-                <textarea wire:model.defer="message" wire:keydown.enter="ask" wire:loading.attr="disabled" id="chat"
+                <textarea wire:model="message" wire:keydown.enter="ask" wire:loading.attr="disabled" id="chat"
                     rows="6"
                     class="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Ask your assistant"></textarea>
@@ -75,7 +74,7 @@
         <div>
             <label for="chatBoxModel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Model</label>
-            <select wire:model.defer="chatBoxModel"
+            <select wire:model="chatBoxModel"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option>Choose an OpenAI Model</option>
                 @foreach ($availableGPTModels as $chatBoxModelKey => $chatBoxModelValue)
@@ -87,7 +86,7 @@
         <div>
             <label for="promptList" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prompt
                 List</label>
-            <select data-popover-target="popover-default" wire:model="chatBoxRole"
+            <select data-popover-target="popover-default" wire:model.live="chatBoxRole"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value=''>Choose a Prompt</option>
                 @foreach ($availableGPTRoles as $availableRoleKey => $availableRoleValue)
@@ -109,14 +108,14 @@
         <div>
             <label for="chatBoxTemperature"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Temperature</label>
-            <input wire:model="chatBoxTemperature" type="number" step="0.1" min="0" max="1"
+            <input wire:model.live="chatBoxTemperature" type="number" step="0.1" min="0" max="1"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0.0 - 1.0">
         </div>
         <div>
             <label for="chatBoxMaxTokens"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MaxTokens</label>
-            <input wire:model="chatBoxMaxTokens" type="number" step="100" min="0" max="4096"
+            <input wire:model.live="chatBoxMaxTokens" type="number" step="100" min="0" max="4096"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="1 - 4096">
         </div>

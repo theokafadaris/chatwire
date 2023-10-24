@@ -1,10 +1,10 @@
 <div class="space-y-4">
     <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Create a new post</h1>
     <div>
-        <form class="space-y-4" wire:submit.prevent="ask">
+        <form class="space-y-4" wire:submit="ask">
             <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Propose your
                 topic</label>
-            <input wire:model.defer='topic' type="text" id="topic"
+            <input wire:model='topic' type="text" id="topic"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Write a post for the benefits that bees are bringing to the environment..." required>
             <div class="flex justify-end">
@@ -35,14 +35,14 @@
                 <div class="mt-2 w-full">
                     <label for="title" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blog
                         Url</label>
-                    <input type="text" id="title" wire:model.defer='url'
+                    <input type="text" id="title" wire:model='url'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="https:://www.example.com" required>
                 </div>
                 <div class="mt-2 w-full">
                     <label for="title" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post
                         Title</label>
-                    <input type="text" id="title" wire:model.defer='title'
+                    <input type="text" id="title" wire:model='title'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Write a post for the benefits that bees are bringing to the environment..."
                         required>
@@ -50,7 +50,7 @@
                 <div class="mt-2">
                     <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post
                         Body</label>
-                    <textarea rows="10" wire:model.defer='body'
+                    <textarea rows="10" wire:model='body'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Write a post for the benefits that bees are bringing to the environment..." required>
                 </textarea>
@@ -62,7 +62,7 @@
                     <label for="status"
                         class="w-full block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post
                         Status</label>
-                    <select wire:model.defer='status' id="status"
+                    <select wire:model='status' id="status"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         required>
                         <option value="publish">Publish</option>
@@ -76,14 +76,14 @@
                 <div class="mt-2 w-full">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wordpress
                         Username</label>
-                    <input type="text" id="username" wire:model.defer='username'
+                    <input type="text" id="username" wire:model='username'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter your WordPress username..." required>
                 </div>
                 <div class="mt-2 w-full">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wordpress
                         Password</label>
-                    <input type="password" id="password" wire:model.defer='password'
+                    <input type="password" id="password" wire:model='password'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter your WordPress password..." required>
                 </div>
