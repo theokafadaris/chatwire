@@ -55,7 +55,7 @@ class WordpressCreatePost extends Component
     {
         $this->transactions[] = ['role' => 'system', 'content' => $this->chatBoxSystemInstruction];
         // If the user has typed something, then asking the ChatGPT API
-        if (! empty($this->topic)) {
+        if (!empty($this->topic)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->topic];
             $response = $this->openAIService->ask(
                 $this->chatBoxModel,
@@ -86,7 +86,6 @@ class WordpressCreatePost extends Component
             'username' => 'required',
             'password' => 'required',
         ]);
-        // dd($this->url, $this->title, $this->body, $this->status, $this->username, $this->password);
         $response = Wordpress::createPost(
             $this->url,
             $this->title,

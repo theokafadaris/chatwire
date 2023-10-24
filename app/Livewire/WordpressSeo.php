@@ -27,8 +27,8 @@ class WordpressSeo extends Component
     public $messages = [];
 
     public $chatBoxSystemInstruction = 'I want you to act as a SEO expert. 
-                I will type blog post title and body and you will reply with SEO focus keywords, 
-                meta title and meta description in a json format. I want you to only reply with this words, 
+                I will type blog post title and body and you will reply with SEO focus_keywords, 
+                meta_title and meta_description in a json format. I want you to only reply with this words, 
                 and nothing else. Do not write explanations. 
                 My first blog post title and body is the following.';
 
@@ -46,14 +46,14 @@ class WordpressSeo extends Component
         ]);
         $response = WordpressModel::getPostsPerPage($this->url, 1, 1)[0];
 
-        $this->firstPost = 'title: '.$response->title->rendered.PHP_EOL.'body: '.$response->content->rendered;
+        $this->firstPost = 'title: ' . $response->title->rendered . PHP_EOL . 'body: ' . $response->content->rendered;
     }
 
     public function ask()
     {
         $this->transactions[] = ['role' => 'system', 'content' => $this->chatBoxSystemInstruction];
         // If the user has typed something, then asking the ChatGPT API
-        if (! empty($this->firstPost)) {
+        if (!empty($this->firstPost)) {
             $this->transactions[] = ['role' => 'user', 'content' => $this->firstPost];
             $response = $this->openAIService->ask(
                 $this->chatBoxModel,

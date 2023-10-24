@@ -16,7 +16,7 @@ class Wordpress extends Model
         $client = new Client();
 
         //Get the wordpress posts using the wordpress api
-        $response = $client->request('GET', $url.'/wp-json/wp/v2/posts');
+        $response = $client->request('GET', $url . '/wp-json/wp/v2/posts');
 
         //Get the number of posts
         $totalPosts = $response->getHeader('X-WP-Total')[0];
@@ -31,7 +31,7 @@ class Wordpress extends Model
         $client = new Client();
 
         //Get the wordpress posts using the wordpress api
-        $response = $client->request('GET', $url.'/wp-json/wp/v2/posts', [
+        $response = $client->request('GET', $url . '/wp-json/wp/v2/posts', [
             'query' => [
                 'page' => $page,
                 'per_page' => $perPage,
@@ -64,11 +64,11 @@ class Wordpress extends Model
 
         //Try to create a new post using the wordpress api
         try {
-            $response = $client->post($url.'/wp-json/wp/v2/posts', [
+            $response = $client->post($url . '/wp-json/wp/v2/posts', [
                 // 'auth' => [$username, $password],
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'Authorization' => 'Basic '.base64_encode($username.':'.$password),
+                    'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
                 ],
                 'json' => $payload,
             ]);
