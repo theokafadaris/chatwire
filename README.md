@@ -54,7 +54,7 @@ Now, you can upload your audio files to create transcription using Audio Resourc
 
 This project requires the following technologies:
 
--   PHP 8.1+
+-   PHP 8.2+
 
 -   MySQL
 
@@ -62,7 +62,7 @@ This project requires the following technologies:
 
 The project uses the following technologies:
 
--   Laravel 10 Breeze
+-   Laravel 11 Breeze
 
 -   Livewire
 
