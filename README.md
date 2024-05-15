@@ -4,7 +4,7 @@ Chatwire is a clone of ChatGPT made with Laravel Breeze using Livewire and the O
 
 ## Description
 
-In this project, we have a Laravel 10 Breeze with Livewire, a login session, and access to OpenAI's ChatGPT API. The entire Laravel project is based on TailwindCSS using Flowbite, Vite.js to compile scripts, MySQL. As far as the extra packages Flowbite, Laravel-Livewire, openai-php, livewire-alert, Laravel Prompts are used.
+In this project, we have a Laravel 11 Breeze with Livewire, a login session, and access to OpenAI's ChatGPT API. The entire Laravel project is based on TailwindCSS using Flowbite, Vite.js to compile scripts, MySQL. As far as the extra packages Flowbite, Laravel-Livewire, openai-php, livewire-alert, Laravel Prompts are used.
 
 ## Purpose
 

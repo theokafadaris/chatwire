@@ -11,7 +11,7 @@ class openAIService
     {
         $response = OpenAI::audio()->transcribe([
             'model' => 'whisper-1',
-            'file' => fopen(storage_path('app/'.$filePath), 'r'),
+            'file' => fopen(storage_path('app/' . $filePath), 'r'),
             'language' => $language,
             'response_format' => 'verbose_json',
         ]);
@@ -38,6 +38,7 @@ class openAIService
             'gpt-3.5-turbo-16k' => 'GPT-3.5 Turbo 16k',
             'gpt-4' => 'GPT-4',
             'gpt-4-32k' => 'GPT-4 32k',
+            'gpt-4o' => 'GPT-4o',
         ];
     }
 
