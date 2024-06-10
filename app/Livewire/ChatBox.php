@@ -114,7 +114,7 @@ class ChatBox extends Component
         } else {
             if ($this->chatbox->exists) {
                 $this->chatbox->update([
-                    'messages' => $this->messages,
+                    'messages' => json_encode($this->messages),
                     'total_tokens' => $this->totalTokens,
                 ]);
                 $this->message = '';
