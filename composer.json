@@ -5,7 +5,9 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.2|^7.2.3",
+        "barryvdh/laravel-dompdf": "^3.0",
+        "cloudinary-labs/cloudinary-laravel": "^2.2",
         "guzzlehttp/guzzle": "^7.2",
         "jantinnerezo/livewire-alert": "^3.0",
         "laravel/framework": "^11.0",
@@ -13,9 +15,13 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
         "league/commonmark": "^2.3",
+        "league/flysystem": "^3.28",
+        "league/flysystem-ziparchive": "^3.28",
         "livewire/livewire": "^3.0",
         "nesbot/carbon": "^2.72",
-        "openai-php/laravel": "^0.8.0"
+        "openai-php/laravel": "^0.8.0",
+        "rajurayhan/larastreamer": "^1.0",
+        "realrashid/sweet-alert": "^7.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

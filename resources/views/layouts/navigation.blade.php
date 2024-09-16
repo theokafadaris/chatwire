@@ -15,12 +15,28 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
+                    <!-- <x-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
                         {{ __('ChatBox') }}
+                    </x-nav-link> -->
+                    <x-nav-link :href="route('bible.index')" :active="request()->routeIs('bible.index')">
+                        {{ __('Good News Bible') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
-                        {{ __('Wordpress') }}
+                    <x-nav-link :href="route('spotify')" :active="request()->routeIs('spotify')">
+                        {{ __('Spotify') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('ai')" :active="request()->routeIs('ai')">
+                        {{ __('AI Chat') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
+                        {{ __('Books') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('reuters.index')" :active="request()->routeIs('reuters.index')">
+                        {{ __('Reuters News') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('translate.index')" :active="request()->routeIs('translate.index')">
+                        {{ __('Translate | Detect Language') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -83,11 +99,26 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
+            <!-- <x-responsive-nav-link :href="route('chatbox')" :active="request()->routeIs('chatbox')">
                 {{ __('Chat Box') }}
+            </x-responsive-nav-link> -->
+            <x-responsive-nav-link :href="route('bible.index')" :active="request()->routeIs('bible.index')">
+                {{ __('Good News Bible') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('wordpress')" :active="request()->routeIs('wordpress')">
-                {{ __('Wordpress') }}
+            <x-responsive-nav-link :href="route('spotify')" :active="request()->routeIs('spotify')">
+                {{ __('Spotify') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai')" :active="request()->routeIs('ai')">
+                {{ __('AI Chat') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
+                {{ __('Books') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('reuters.index')" :active="request()->routeIs('reuters.index')">
+                {{ __('Reuters News') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('translate.index')" :active="request()->routeIs('translate.index')">
+                {{ __('Translate | Detect Language') }}
             </x-responsive-nav-link>
         </div>
 

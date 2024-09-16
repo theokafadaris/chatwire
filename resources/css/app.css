@@ -1,3 +1,107 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* resources/css/app.css */
+
+.custom-button {
+    @apply relative z-10 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors;
+}
+
+.custom-container {
+    @apply relative z-10;
+}
+.custom-input-group {
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+
+.custom-input-group .form-control {
+    height: 38px; 
+    font-size: 14px; 
+}
+
+.custom-input-group .btn {
+    height: 38px; 
+}
+
+.progress-container {
+    margin-bottom: 20px;
+}
+
+.progress {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #e2e2e2;
+    border-radius: 40px;
+}
+
+.progress p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.progress .bar {
+    position: absolute;
+    border-radius: 40px;
+    height: 100%;
+    width: 0%;
+    background-color: #09b1db;
+}
+
+.song-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.song-title {
+    font-weight: bold;
+}
+/* Container for the video player */
+.video-container {
+    position: relative;
+    width: 640px;  /* Fixed width */
+    height: 360px; /* Fixed height */
+}
+
+/* Video player styling */
+.video-player {
+    width: 100%;
+    height: 100%;
+}
+
+/* Thumbnail styling */
+.video-thumbnail {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+/* Hover message styling */
+.hover-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+/* Show hover message on container hover */
+.video-container:hover .hover-message {
+    opacity: 1;
+}

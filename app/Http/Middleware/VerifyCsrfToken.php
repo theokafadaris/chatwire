@@ -12,6 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        'ai/send',
+        'ai/send-gemini',
+        'translate/detect',
+        'translate/translate',
     ];
 }
